@@ -1,3 +1,3 @@
 # AulaCSharp
 
-* Aula de C# do professor Douglas. Unidade Angelo Sampaio.
+* Aula de C# do professor Douglas. Unidade Angelo Sampaio. Curso ADS
