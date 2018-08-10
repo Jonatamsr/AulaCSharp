@@ -20,9 +20,13 @@ namespace Aula0708_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        bool flag = true;
-        float valor1 = 0;
-        float valor2 = 0;
+        bool flagVirgula = false;
+        char opr;
+        bool flagValorPreenchido = false;
+        double valor1 = 0;
+        double valor2 = 0;
+        double resultado = 0;
+        double? valorMemoria = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +34,10 @@ namespace Aula0708_WPF
 
         public string digitaVerificaZero(string valor, int num)
         {
+            if (valor.Equals("Err"))
+            {
+                return valor1.ToString();
+            }
             if(valor.Equals("0"))
             {
                 valor = num.ToString();
@@ -39,6 +47,52 @@ namespace Aula0708_WPF
                 valor += num;
             }
             return valor;
+        }
+
+        public void salvaValor1(char opr)
+        {
+            if (!flagValorPreenchido)
+            {
+                valor1 = double.Parse(txtboxNumeros.Text);
+                txtboxNumeros.Text = 0.ToString();
+                flagValorPreenchido = true;
+                this.opr = opr;
+            }
+            flagVirgula = false;
+        }
+
+        public string realizaOperacao(double valor1, double valor2, char opr)
+        {
+            if(valor1 != 0)
+            {
+                this.valor1 = valor1;
+            }
+            switch (opr) {             
+                case '+':
+                    resultado = valor1 + valor2;
+                    break;
+                case '-':
+                    resultado = valor1 - valor2;
+                    break;
+                case '/':
+                    if(valor1 != 0 && valor2 != 0)
+                    {
+                        resultado = valor1 / valor2;
+                    }
+                    else
+                    {
+                        txtboxNumeros.Text = "Err";
+                    }
+                    break;
+                case '*':
+                    resultado = valor1 * valor2;
+                    break;
+                case 'p':
+                    resultado = Math.Pow(valor1, valor2);
+                    break;
+            }
+             
+            return resultado.ToString();
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
@@ -99,10 +153,10 @@ namespace Aula0708_WPF
 
         private void btnVirg_Click(object sender, RoutedEventArgs e)
         {
-            if (flag)
+            if (!flagVirgula)
             {
                 txtboxNumeros.Text += ',';
-                flag = false;
+                flagVirgula = true;
             }
         }
 
@@ -111,7 +165,7 @@ namespace Aula0708_WPF
             char ultimo = txtboxNumeros.Text.Last();
             if(txtboxNumeros.Text.Last() == ',')
             {
-                flag = true;
+                flagVirgula = true;
             }
             if(txtboxNumeros.Text.Length > 1)
             {
@@ -125,8 +179,68 @@ namespace Aula0708_WPF
 
         private void btnMais_Click(object sender, RoutedEventArgs e)
         {
-            valor1 = float.Parse(txtboxNumeros.Text);
-            txtboxNumeros.Text = 0.ToString();
+            salvaValor1('+');
+        }
+
+        private void btnMenos_Click(object sender, RoutedEventArgs e)
+        {
+            salvaValor1('-');
+        }
+
+        private void btnVezes_Click(object sender, RoutedEventArgs e)
+        {
+            salvaValor1('*');
+        }
+
+        private void btnDividir_Click(object sender, RoutedEventArgs e)
+        {
+            salvaValor1('/');
+        }
+
+        private void btnPow_Click(object sender, RoutedEventArgs e)
+        {
+            salvaValor1('p');
+        }
+
+        private void btnSqrt_Click(object sender, RoutedEventArgs e)
+        {
+            txtboxNumeros.Text = Math.Sqrt(double.Parse(txtboxNumeros.Text)).ToString();
+        }
+
+        private void btnIgual_Click(object sender, RoutedEventArgs e)
+        {
+            if (flagValorPreenchido)
+            {
+                valor2 = double.Parse(txtboxNumeros.Text);
+                double valorHistorico = double.Parse(realizaOperacao(valor1, valor2, opr));
+                txtboxNumeros.Text = valorHistorico.ToString();
+                ListBoxItem teste = new ListBoxItem();
+                teste.Content = valor1 + " " + opr + " " + valor2 + " = " + valorHistorico;
+                lbHistory.Items.Add(teste);
+                if (lbHistory.Items.Count > 0)
+                {
+                    lbHistory.ScrollIntoView(lbHistory.Items[lbHistory.Items.Count - 1]);
+                }
+                valor1 = 0;
+                valor2 = 0;
+                flagValorPreenchido = false;
+                flagVirgula = false;
+
+            }
+        }
+
+        private void btnM_Click(object sender, RoutedEventArgs e)
+        {
+            if (!valorMemoria.HasValue)
+            {
+                valorMemoria = double.Parse(txtboxNumeros.Text);
+                txtboxNumeros.Text = "0";
+            }
+            else
+            {
+                txtboxNumeros.Text = valorMemoria.ToString();
+                valorMemoria = null;
+            }
         }
     }
 }
