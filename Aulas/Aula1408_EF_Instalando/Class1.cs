@@ -13,6 +13,8 @@ namespace Aula1408_EF_Instalando
      * 
      * Instalando Entity Framework
      * 
+     * 
+     * Criando base (Abordagem: ModelFirst)
      */
 
     public class Class1
