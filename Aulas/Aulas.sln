@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aula0708_WPF", "Aula0708_WP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aula1408_EF_Instalando", "Aula1408_EF_Instalando\Aula1408_EF_Instalando.csproj", "{DCA1DFFC-1B12-4F37-AB82-418C6570BFFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aula1608_EFDatabaseFirst", "Aula1608_EFDatabaseFirst\Aula1608_EFDatabaseFirst.csproj", "{5D26B3A4-334B-43FC-B04E-152D6B99276F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DCA1DFFC-1B12-4F37-AB82-418C6570BFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCA1DFFC-1B12-4F37-AB82-418C6570BFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCA1DFFC-1B12-4F37-AB82-418C6570BFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D26B3A4-334B-43FC-B04E-152D6B99276F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D26B3A4-334B-43FC-B04E-152D6B99276F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D26B3A4-334B-43FC-B04E-152D6B99276F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D26B3A4-334B-43FC-B04E-152D6B99276F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
