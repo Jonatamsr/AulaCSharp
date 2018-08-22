@@ -49,6 +49,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\DAL\Contexto.cs" />
     <Compile Include="Models\Produto.cs" />
